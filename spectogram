@@ -1,0 +1,18 @@
+Fs = 1 / dt               # Define the sampling frequency,
+interval = int(Fs)        # ... the interval size,
+overlap = int(Fs * 0.95)  # ... and the overlap intervals
+
+                          # Compute the spectrogram
+f, t, Sxx = spectrogram(
+    EEG,                  # Provide the signal,
+    fs=Fs,                # ... the sampling frequency,
+    nperseg=interval,     # ... the length of a segment,
+    noverlap=overlap)     # ... the number of samples to overlap,
+pcolormesh(t, f, 10 * log10(Sxx),
+               cmap='jet')# Plot the result
+colorbar()                # ... with a color bar,
+ylim([0, 70])             # ... set the frequency range,
+xlabel('Time [s]')        # ... and label the axes
+ylabel('Frequency [Hz]')
+savefig('C:/Users/localadmin/Desktop/TUMS_Summer_Course/Orginal_Material_NoteBooks/S5_Files/Images/3-14')
+show()
